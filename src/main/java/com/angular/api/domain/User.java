@@ -15,6 +15,9 @@ public class User {
     @Column
     private  String email;
 
+    @Column
+    private String msisdn;
+
     public long getId() {
         return id;
     }
@@ -31,12 +34,21 @@ public class User {
         return email;
     }
 
+    public String getMsisdn() {
+        return msisdn;
+    }
+
+    public void setMsisdn(String msisdn) {
+        this.msisdn = msisdn;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", msisdn='" + msisdn + '\'' +
                 '}';
     }
 }
