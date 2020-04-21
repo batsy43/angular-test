@@ -2,32 +2,34 @@ package com.angular.api.controller;
 
 import com.angular.api.domain.User;
 import com.angular.api.repository.UserRepository;
+import com.angular.api.service.api.UserService;
+import com.angular.api.utils.messages.Response;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
 @CrossOrigin
 public class UserResource {
 
-    private UserRepository userRepository;
+    private UserService userService;
 
-    public UserResource(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserResource(UserService userService) {
+        this.userService = userService;
     }
 
-
     @PostMapping
-    public User saveUser(@RequestBody User user)
+    public Response saveUser(@RequestBody User user)
     {
 
-        return userRepository.save(user);
+        return userService.save(user);
     }
 
     @GetMapping
-    public List<User> findAll()
+    public Response findAll()
     {
-        return userRepository.findAll();
+        return userService.findAll();
     }
 }
