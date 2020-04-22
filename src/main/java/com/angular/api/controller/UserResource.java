@@ -32,4 +32,10 @@ public class UserResource {
     {
         return userService.findAll();
     }
+
+    @GetMapping("/msisdn/{msisdn}")
+    public Response findByMsisdn(@RequestParam String msisdn)
+    {
+        return userService.findByMsisdn(msisdn);
+    }
 }

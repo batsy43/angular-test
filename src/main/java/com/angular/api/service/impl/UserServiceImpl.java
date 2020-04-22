@@ -4,16 +4,24 @@ import com.angular.api.domain.User;
 import com.angular.api.repository.UserRepository;
 import com.angular.api.service.api.UserService;
 import com.angular.api.utils.messages.Response;
+import zw.co.econet.commons.msisdn.Msisdn;
+import zw.co.econet.commons.msisdn.formatter.MsisdnFormatter;
+import zw.co.econet.commons.msisdn.parser.MsisdnParser;
+
 
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Locale.ENGLISH;
+
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private final MsisdnParser msisdnParser;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, MsisdnParser msisdnParser) {
         this.userRepository = userRepository;
+        this.msisdnParser = msisdnParser;
     }
 
     @Override
@@ -21,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
         Response response = new Response();
 
-        Optional<User> userSearched = userRepository.findByMsisdn(user.getMsisdn());
+        Optional<User> userSearched = userRepository.findByMsisdn(msisdnConverter(user.getMsisdn()));
 
         if(userSearched.isPresent())
         {
@@ -57,6 +65,35 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response findByMsisdn(String msisdn) {
-        return null;
+
+        Response response = new Response();
+
+        Optional<User> userSearched = userRepository.findByMsisdn(msisdnConverter(msisdn));
+
+        if(!userSearched.isPresent())
+        {
+            response.setMessage("Please Register First ");
+            response.setSuccess(false);
+
+            return response;
+        }
+
+        response.setMessage("success");
+        response.setSuccess(true);
+        response.setUser(userSearched.get());
+
+        return response;
+    }
+
+
+    public String msisdnConverter(String msisdn)
+    {
+
+        Msisdn msisdnParsed = msisdnParser.parse(msisdn,ENGLISH);
+
+        String msisdnFormated = MsisdnFormatter.MIN_ZERO_PREFIXED.format(msisdnParsed);
+
+        return msisdnFormated;
+
     }
 }
