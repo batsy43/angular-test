@@ -1,0 +1,68 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:tns="http://www.angular.api.com/registration-ws"
+		   targetNamespace="http://www.angular.api.com/registration-ws"
+		   elementFormDefault="qualified">
+
+	<xs:element name="getUserByMsisdnRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="msisdn" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getUserByMsisdnResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userResponse" type="tns:userResponse" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="userResponse">
+		<xs:sequence>
+			<xs:element name="success" type="xs:boolean" />
+			<xs:element name="message" type="xs:string" />
+			<xs:element name="statusCode" type="xs:int" />
+			<xs:element name="userDto" type="tns:userDto" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="userDto">
+		<xs:sequence>
+			<xs:element name="msisdn" type="xs:string" />
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="email" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="getAllUserRequest">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="getAlUserResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="userResponse" type="tns:userResponse" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addUserRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string"/>
+				<xs:element name="email" type="xs:string"/>
+				<xs:element name="msisdn" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addUserResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="success" type="xs:boolean" />
+				<xs:element name="message" type="xs:string" />
+				<xs:element name="statusCode" type="xs:int" />
+				<xs:element name="userDto" type="tns:userDto" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
