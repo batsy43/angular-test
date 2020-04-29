@@ -1,9 +1,7 @@
 package com.angular.api.controller.soap;
 
 import com.angular.api.domain.User;
-import com.angular.api.gs_ws.GetUserByMsisdnRequest;
-import com.angular.api.gs_ws.GetUserByMsisdnResponse;
-import com.angular.api.gs_ws.UserResponse;
+import com.angular.api.gs_ws.*;
 import com.angular.api.service.api.UserService;
 import com.angular.api.utils.messages.Response;
 import org.springframework.beans.BeanUtils;
@@ -23,8 +21,6 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
-import com.angular.api.gs_ws.AddUserResponse;
-
 
 public class RegistrationEndpoint {
 
@@ -32,8 +28,13 @@ public class RegistrationEndpoint {
 
     private UserService userService;
 
+    public RegistrationEndpoint() {
+
+    }
+
     @Autowired
     public RegistrationEndpoint(UserService userService) {
+
         this.userService = userService;
     }
 
@@ -42,6 +43,41 @@ public class RegistrationEndpoint {
     public GetUserByMsisdnResponse getUserByMsisdn(@RequestPayload GetUserByMsisdnRequest request) {
         GetUserByMsisdnResponse response = new GetUserByMsisdnResponse();
         Response user = userService.findByMsisdn(request.getMsisdn());
+
+        UserResponse userResponse = new UserResponse();
+        BeanUtils.copyProperties(user, userResponse);
+        response.setUserResponse(userResponse);
+
+        return response;
+
+    }
+
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllUserRequest")
+    @ResponsePayload
+    public GetAlUserResponse getAllUsers() {
+
+        GetAlUserResponse response = new GetAlUserResponse();
+
+        Response user = userService.findAll();
+
+        UserResponse userResponse = new UserResponse();
+        BeanUtils.copyProperties(user, userResponse);
+        response.setUserResponse(userResponse);
+
+        return response;
+
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addUserRequest")
+    @ResponsePayload
+    public AddUserResponse addUser(@RequestPayload AddUserRequest request) {
+        AddUserResponse response = new AddUserResponse();
+
+        User userRequest = new User();
+        BeanUtils.copyProperties(request, userRequest);
+
+        Response user = userService.save(userRequest);
 
         UserResponse userResponse = new UserResponse();
         BeanUtils.copyProperties(user, userResponse);

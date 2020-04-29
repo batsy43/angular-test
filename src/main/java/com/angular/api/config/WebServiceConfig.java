@@ -26,7 +26,7 @@ public class WebServiceConfig {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    // localhost:8080/ws/movies.wsdl
+    // localhost:8080/ws/registration.wsdl
     @Bean(name = "registration")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema){
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
