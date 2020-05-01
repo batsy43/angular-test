@@ -1,6 +1,6 @@
-package com.angular.api.repository;
+package com.registration.api.repository;
 
-import com.angular.api.domain.User;
+import com.registration.api.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

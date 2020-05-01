@@ -1,30 +1,19 @@
-package com.angular.api.controller.soap;
+package com.registration.api.controller.soap;
 
-import com.angular.api.domain.User;
-import com.angular.api.gs_ws.*;
-import com.angular.api.service.api.UserService;
-import com.angular.api.utils.messages.Response;
+import com.registration.api.domain.User;
+import com.registration.api.gs_ws.*;
+import com.registration.api.service.api.UserService;
+import com.registration.api.utils.messages.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.ws.config.annotation.EnableWs;
-import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import org.springframework.ws.transport.http.MessageDispatcherServlet;
-import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
-import org.springframework.xml.xsd.SimpleXsdSchema;
-import org.springframework.xml.xsd.XsdSchema;
 
 
 public class RegistrationEndpoint {
 
-    public static final String NAMESPACE_URI = "http://www.angular.api.com/registration-ws";
+    public static final String NAMESPACE_URI = "http://www.registration.api.com/registration-ws";
 
     private UserService userService;
 

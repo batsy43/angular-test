@@ -1,13 +1,9 @@
-package com.angular.api.controller;
+package com.registration.api.controller;
 
-import com.angular.api.domain.User;
-import com.angular.api.repository.UserRepository;
-import com.angular.api.service.api.UserService;
-import com.angular.api.utils.messages.Response;
+import com.registration.api.domain.User;
+import com.registration.api.service.api.UserService;
+import com.registration.api.utils.messages.Response;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")

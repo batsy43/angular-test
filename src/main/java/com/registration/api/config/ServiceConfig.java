@@ -1,8 +1,8 @@
-package com.angular.api.config;
+package com.registration.api.config;
 
-import com.angular.api.repository.UserRepository;
-import com.angular.api.service.api.UserService;
-import com.angular.api.service.impl.UserServiceImpl;
+import com.registration.api.repository.UserRepository;
+import com.registration.api.service.api.UserService;
+import com.registration.api.service.impl.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import zw.co.econet.commons.msisdn.parser.MsisdnParser;

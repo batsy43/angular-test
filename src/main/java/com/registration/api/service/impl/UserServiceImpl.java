@@ -1,9 +1,9 @@
-package com.angular.api.service.impl;
+package com.registration.api.service.impl;
 
-import com.angular.api.domain.User;
-import com.angular.api.repository.UserRepository;
-import com.angular.api.service.api.UserService;
-import com.angular.api.utils.messages.Response;
+import com.registration.api.domain.User;
+import com.registration.api.repository.UserRepository;
+import com.registration.api.service.api.UserService;
+import com.registration.api.utils.messages.Response;
 import zw.co.econet.commons.msisdn.Msisdn;
 import zw.co.econet.commons.msisdn.formatter.MsisdnFormatter;
 import zw.co.econet.commons.msisdn.parser.MsisdnParser;
@@ -29,7 +29,9 @@ public class UserServiceImpl implements UserService {
 
         Response response = new Response();
 
-        Optional<User> userSearched = userRepository.findByMsisdn(msisdnConverter(user.getMsisdn()));
+        String msisdnConverted = msisdnConverter(user.getMsisdn());
+
+        Optional<User> userSearched = userRepository.findByMsisdn(msisdnConverted);
 
         if(userSearched.isPresent())
         {
@@ -39,6 +41,8 @@ public class UserServiceImpl implements UserService {
 
             return response;
         }
+
+        user.setMsisdn(msisdnConverted);
 
         User userSaved = userRepository.save(user);
 

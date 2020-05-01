@@ -1,7 +1,7 @@
-package com.angular.api.utils.messages;
+package com.registration.api.utils.messages;
 
 
-import com.angular.api.domain.User;
+import com.registration.api.domain.User;
 
 import java.util.List;
 

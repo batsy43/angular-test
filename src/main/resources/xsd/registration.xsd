@@ -1,6 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-		   xmlns:tns="http://www.angular.api.com/registration-ws"
-		   targetNamespace="http://www.angular.api.com/registration-ws"
+		   xmlns:tns="http://www.registration.api.com/registration-ws"
+		   targetNamespace="http://www.registration.api.com/registration-ws"
 		   elementFormDefault="qualified">
 
 	       <xs:element name="getUserByMsisdnRequest">

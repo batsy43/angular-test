@@ -1,9 +1,9 @@
-package com.angular.api.domain;
+package com.registration.api.domain;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "directory")
+//@Table(name = "directory")
 public class User {
 
     @Id

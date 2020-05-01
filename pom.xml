@@ -9,7 +9,7 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.angular</groupId>
+	<groupId>com.registration</groupId>
 	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api</name>
@@ -101,7 +101,7 @@
 					<sources>
 						<source>src/main/resources/xsd/registration.xsd</source>
 					</sources>
-					<packageName>com.angular.api.gs_ws</packageName>
+					<packageName>com.registration.api.gs_ws</packageName>
 					<clearOutputDir>false</clearOutputDir>
 				</configuration>
 			</plugin>

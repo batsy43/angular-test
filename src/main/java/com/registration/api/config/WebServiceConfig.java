@@ -1,6 +1,6 @@
-package com.angular.api.config;
+package com.registration.api.config;
 
-import com.angular.api.controller.soap.RegistrationEndpoint;
+import com.registration.api.controller.soap.RegistrationEndpoint;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
