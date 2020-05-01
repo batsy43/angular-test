@@ -26,12 +26,14 @@ public class UserResource {
     @GetMapping
     public Response findAll()
     {
+
         return userService.findAll();
     }
 
     @GetMapping("/msisdn/{msisdn}")
-    public Response findByMsisdn(@RequestParam String msisdn)
+    public Response findByMsisdn(@PathVariable String msisdn)
     {
+
         return userService.findByMsisdn(msisdn);
     }
 }

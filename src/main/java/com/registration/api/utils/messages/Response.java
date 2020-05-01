@@ -9,8 +9,6 @@ public class Response {
 
     private boolean success;
 
-    private String narrative;
-
     private String message;
 
     private int statusCode;
@@ -25,14 +23,6 @@ public class Response {
 
     public void setSuccess(boolean success) {
         this.success = success;
-    }
-
-    public String getNarrative() {
-        return narrative;
-    }
-
-    public void setNarrative(String narrative) {
-        this.narrative = narrative;
     }
 
     public String getMessage() {
