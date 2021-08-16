@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
         if(userSearched.isPresent())
         {
-            response.setMessage("already Registered");
+            response.setMessage("User already Registered");
             response.setSuccess(false);
             response.setUser(userSearched.get());
 
